@@ -8,12 +8,16 @@ namespace Kursach
 {
    public class GravityPoint : ImpactPoint
   {
-        
+        int rad = 80;
         public override void Render(Graphics g)
         {
-       
+
             g.DrawEllipse(
-               new Pen(Color.Red),X,Y, 80, 80
+               new Pen(Color.Red),
+               X - rad/2,
+               Y - rad/2,
+               rad,
+              rad
            );
         }
     // а сюда по сути скопировали с минимальными правками то что было в UpdateState
@@ -21,13 +25,18 @@ namespace Kursach
     {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
-            List<Particle> particles = new List<Particle>();
+          
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-            if (r + particle.Radius < X || r + particle.Radius < Y) // если частица оказалось внутри окружности
+            if (r + particle.Radius < rad/2 ) // если частица оказалось внутри окружности
            {
-                particles.Add(particle.Color = Color.Red);
 
-           }
+                if (particle is ParticleColor particleColor)
+                {
+                    particleColor.FromColor = Color.Red;
+                    particleColor.ToColor = Color.FromArgb(0,Color.Red);
+                }
+
+            }
     }
   
 }

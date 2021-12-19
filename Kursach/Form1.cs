@@ -15,7 +15,8 @@ namespace Kursach
         List<Emmiter> emmiters = new List<Emmiter>();
         Emmiter emmiter;
         List<ImpactPoint> impactPoints = new List<ImpactPoint>();
-       
+        GravityPoint point1; // добавил поле под первую точку
+        GravityPoint point2;
         public Form1()
         {
             InitializeComponent();
@@ -29,27 +30,26 @@ namespace Kursach
                 SpeedMax = 30
             };
             emmiters.Add(emmiter);
-            emmiter.impactPoints.Add(new GravityPoint
+         
+
+            point1 = new GravityPoint
             {
                 X = picDisplay.Width / 2 + 190,
                 Y = picDisplay.Height / 4,
-            });
+            };
+            point2 = new GravityPoint
+            {
+                X = picDisplay.Width / 2 - 100,
+                Y = picDisplay.Height / 2,
+            };
 
+            // привязываем поля к эмиттеру
+            emmiter.impactPoints.Add(point1);
+            emmiter.impactPoints.Add(point2);
 
         }
       
-        public void CreatKrug(Graphics g)
-        {
-            List<Particle> kk = new List<Particle>();
-           
-            foreach (var krug in kk)
-            {
-               g.FillEllipse(new SolidBrush(Color.Aquamarine), 480, 120, 80, 80);
-                 kk.Add(krug);
-            }
-
-           
-        }
+       
        
 
         
@@ -61,7 +61,7 @@ namespace Kursach
             {
 
                 g.Clear(Color.Black);
-                CreatKrug(g);
+               
               //  g.DrawEllipse(new Pen(Color.Aquamarine, 3), 480, 120, 80,80);
                 emmiter.Render(g); // рендерим систему
                 
