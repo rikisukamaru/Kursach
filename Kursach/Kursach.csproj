@@ -54,6 +54,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GravityPoint.cs" />
     <Compile Include="ImpactPoint.cs" />
     <Compile Include="LinEmmiter.cs" />
     <Compile Include="Particle.cs" />

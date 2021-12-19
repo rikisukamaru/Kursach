@@ -32,6 +32,8 @@
             this.picDisplay = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TBSpeedPart = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TBSpeedPart)).BeginInit();
             this.SuspendLayout();
@@ -53,17 +55,39 @@
             // 
             // TBSpeedPart
             // 
-            this.TBSpeedPart.Location = new System.Drawing.Point(13, 430);
+            this.TBSpeedPart.Location = new System.Drawing.Point(10, 455);
+            this.TBSpeedPart.Maximum = 30;
+            this.TBSpeedPart.Minimum = 1;
             this.TBSpeedPart.Name = "TBSpeedPart";
             this.TBSpeedPart.Size = new System.Drawing.Size(104, 56);
             this.TBSpeedPart.TabIndex = 1;
+            this.TBSpeedPart.Value = 1;
             this.TBSpeedPart.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(120, 464);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 433);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Скорость падения";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 490);
+            this.ClientSize = new System.Drawing.Size(757, 516);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TBSpeedPart);
             this.Controls.Add(this.picDisplay);
             this.Name = "Form1";
@@ -80,6 +104,8 @@
         private System.Windows.Forms.PictureBox picDisplay;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar TBSpeedPart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

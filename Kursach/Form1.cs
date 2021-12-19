@@ -14,6 +14,7 @@ namespace Kursach
     {
         List<Emmiter> emmiters = new List<Emmiter>();
         Emmiter emmiter;
+
         LinEmmiter lnem;
         public Form1()
         {
@@ -25,9 +26,9 @@ namespace Kursach
                 Width = picDisplay.Width,
                 GravitationY = 0.25f,
                  SpeedMin = 1,
-                SpeedMax = 10
+                SpeedMax = 30
             };
-            emmiters.Add(lnem);
+            emmiters.Add(emmiter);
         }
       
 
@@ -58,7 +59,8 @@ namespace Kursach
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            lnem. = TBSpeedPart.Value;
+         emmiter.SpeedMin = TBSpeedPart.Value;
+         label1.Text = $"{TBSpeedPart.Value}";
         }
     }
 }

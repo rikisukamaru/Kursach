@@ -31,6 +31,7 @@ namespace Kursach
 
         public virtual void ResetParticle(Particle particle)
         {
+            
             particle.Life = Particle.rnd.Next(LifeMin, LifeMax);
 
             particle.X = X;
@@ -40,7 +41,7 @@ namespace Kursach
                 + (double)Particle.rnd.Next(Spreading)
                 - Spreading / 2;
 
-            var speed = Particle.rnd.Next(SpeedMin, SpeedMax);
+           var speed = Particle.rnd.Next(SpeedMin, SpeedMax);
 
             particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
             particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
