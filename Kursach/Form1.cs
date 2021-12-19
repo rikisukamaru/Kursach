@@ -19,6 +19,7 @@ namespace Kursach
         Kruglishok point2;
         Kruglishok point3;
         Kruglishok point4;
+        Kruglishok point5;
         public Form1()
         {
             InitializeComponent();
@@ -59,12 +60,18 @@ namespace Kursach
                 Y = 260 ,
                 color = Color.Aquamarine
             };
-
+            point5 = new Kruglishok
+            {
+                X = picDisplay.Width / 2 + 120,
+                Y = 280,
+                color = Color.Red
+            };
             // привязываем поля к эмиттеру
             emmiter.impactPoints.Add(point1);
             emmiter.impactPoints.Add(point2);
             emmiter.impactPoints.Add(point3);
             emmiter.impactPoints.Add(point4);
+            emmiter.impactPoints.Add(point5);
         }
       
        
@@ -90,9 +97,8 @@ namespace Kursach
      
         private void picDisplay_MouseMove_1(object sender, MouseEventArgs e)
         {
-
-            emmiter.MousePositionX = e.X;
-            emmiter.MousePositionY = e.Y;
+          
+           
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -111,6 +117,20 @@ namespace Kursach
                     (p as Kruglishok).rad = trackBar1.Value;
                 }
             }
+        }
+
+        private void picDisplay_MouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (var emitter in emmiters)
+            {
+                emitter.MousePositionX = e.X;
+                emitter.MousePositionY = e.Y;
+            }
+
+            // а тут передаем положение мыши, в положение гравитона
+            point5.X = e.X;
+            point5.Y = e.Y;
+            
         }
     }
 }

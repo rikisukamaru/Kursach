@@ -19,15 +19,52 @@ namespace Kursach
                rad,
               rad
            );
+            var stringFormat = new StringFormat(); // создаем экземпляр класса
+            stringFormat.Alignment = StringAlignment.Center; // выравнивание по горизонтали
+            stringFormat.LineAlignment = StringAlignment.Center; // выравнивание по вертикали
+
+            if (color == Color.Red)
+            {
+                if (schet >= 250)
+                {
+                    g.FillEllipse(
+                    new SolidBrush(Color.Red),
+                    X - rad / 2,
+                    Y - rad / 2,
+                    rad,
+                    rad);
+                    g.DrawString(
+                    $"{schet}",
+                    new Font("Verdana", 14),
+                    new SolidBrush(Color.DeepSkyBlue),
+                    X,
+                    Y,
+                    stringFormat
+                     );
+                }
+                else
+                {
+                    g.DrawString(
+                     $"{schet}",
+                     new Font("Verdana", 10),
+                     new SolidBrush(Color.DeepSkyBlue),
+                     X,
+                     Y,
+                     stringFormat
+                      );
+                }
+            }
+            
         }
-    // а сюда по сути скопировали с минимальными правками то что было в UpdateState
+       
+    
     public override void ImpactParticle(Particle particle)
     {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
             Color pp = Color.Purple;
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-            if (r + particle.Radius < rad / 2) // если частица оказалось внутри окружности
+            if (r + particle.Radius <rad/2) // если частица оказалось внутри окружности
             {
                 if (color == Color.Aqua)
                 {
@@ -61,6 +98,11 @@ namespace Kursach
                         particleColor.FromColor = Color.Aquamarine;
                         particleColor.ToColor = Color.FromArgb(0, Color.Aquamarine);
                     }
+                }
+                else if(color == Color.Red)
+                {
+                    schet++;                  
+                    particle.Life = 0;
                 }
             }
     }
