@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Kursach
 {
-    public abstract class IImpactPoint
+    public abstract class ImpactPoint
     {
         public float X; // ну точка же, вот и две координаты
         public float Y;
@@ -19,13 +19,7 @@ namespace Kursach
         // базовый класс для отрисовки точечки
         public  virtual void Render(Graphics g)
         {
-            g.FillEllipse(
-                    new SolidBrush(Color.Red),
-                    X - 5,
-                    Y - 5,
-                    10,
-                    10
-                );
+
         }
     }
 }

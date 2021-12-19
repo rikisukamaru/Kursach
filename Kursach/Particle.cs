@@ -15,6 +15,7 @@ namespace Kursach
         public float SpeedX; // скорость перемещения по оси X
         public float SpeedY; // скорость перемещения по оси Y
         public float Life;
+        public Color Color;
         public static Random rnd = new Random();
         public Particle()
         {
@@ -26,6 +27,7 @@ namespace Kursach
             SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
             Radius = 2 + rnd.Next(10);
             Life = 20 + rnd.Next(140);
+            Color = Color.White;
         }
         public virtual void Draw(Graphics g)
         {

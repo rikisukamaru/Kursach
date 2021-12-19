@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace Kursach
 {
-   public class Emmiter
+   public class Emmiter 
     {
         List<Particle> particles = new List<Particle>();
         public List<Point> gravityPoints = new List<Point>();
+        public List<ImpactPoint> impactPoints = new List<ImpactPoint>();
         public int MousePositionX;
         public int MousePositionY;
         public float GravitationX = 0;
@@ -81,15 +82,9 @@ namespace Kursach
                 }
                 else
                 {
-                    foreach (var point in gravityPoints)
+                    foreach (var point in impactPoints)
                     {
-                        float gX = point.X - particle.X;
-                        float gY = point.Y - particle.Y;
-                        float r2 = (float)Math.Max(100, gX * gX + gY * gY);
-                        float M = 100;
-
-                        particle.SpeedX += (gX) * M / r2;
-                        particle.SpeedY += (gY) * M / r2;
+                        point.ImpactParticle(particle);
                     }
 
 
@@ -105,22 +100,16 @@ namespace Kursach
         }
 
         // функция рендеринга
-      public virtual void Render(Graphics g)
+        public virtual void Render(Graphics g)
         {
             // утащили сюда отрисовку частиц
             foreach (var particle in particles)
             {
                 particle.Draw(g);
             }
-            foreach (var point in gravityPoints)
+            foreach (var point in impactPoints) // тут теперь  impactPoints
             {
-                g.FillEllipse(
-                    new SolidBrush(Color.Blue),
-                    point.X - 5,
-                    point.Y - 5,
-                    10,
-                    10
-                );
+                point.Render(g);
             }
         }
     }
