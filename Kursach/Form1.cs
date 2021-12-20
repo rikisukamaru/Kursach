@@ -60,18 +60,13 @@ namespace Kursach
                 Y = 260 ,
                 color = Color.Aquamarine
             };
-            point5 = new Kruglishok
-            {
-                X = picDisplay.Width / 2 + 120,
-                Y = 280,
-                color = Color.Red 
-            };
+           
             // привязываем поля к эмиттеру
             emmiter.impactPoints.Add(point1);
             emmiter.impactPoints.Add(point2);
             emmiter.impactPoints.Add(point3);
             emmiter.impactPoints.Add(point4);
-            emmiter.impactPoints.Add(point5);
+           
         }
       
        
@@ -122,6 +117,13 @@ namespace Kursach
            
             if(e.Button == MouseButtons.Left)
             {
+                point5 = new Kruglishok
+                {
+                    X = picDisplay.Width / 2 + 120,
+                    Y = 280,
+                    color = Color.Red
+                };
+                emmiter.impactPoints.Add(point5);
                 foreach (var emitter in emmiters)
                 {
                     emitter.MousePositionX = e.X;
