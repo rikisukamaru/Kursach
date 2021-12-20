@@ -9,7 +9,9 @@ namespace Kursach
    public class Kruglishok : ImpactPoint
   {
        public int rad = 80;
-       
+        public Color FromColor;
+        public Color ToColor;
+
         public override void Render(Graphics g)
         {
             g.DrawEllipse(
@@ -33,6 +35,7 @@ namespace Kursach
                     Y - rad / 2,
                     rad,
                     rad);
+                   
                     g.DrawString(
                     $"{schet}",
                     new Font("Verdana", 14),
@@ -101,6 +104,7 @@ namespace Kursach
                 }
                 else if(color == Color.Red)
                 {
+
                     schet++;                  
                     particle.Life = 0;
                 }

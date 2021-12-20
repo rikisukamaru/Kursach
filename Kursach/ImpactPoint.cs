@@ -13,7 +13,7 @@ namespace Kursach
         public float Y;
         public Color color;
         public int schet = 0;
-        
+       
 
         // абстрактный метод с помощью которого будем изменять состояние частиц
         // например притягивать

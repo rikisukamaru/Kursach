@@ -64,7 +64,7 @@ namespace Kursach
             {
                 X = picDisplay.Width / 2 + 120,
                 Y = 280,
-                color = Color.Red
+                color = Color.Red 
             };
             // привязываем поля к эмиттеру
             emmiter.impactPoints.Add(point1);
@@ -86,8 +86,6 @@ namespace Kursach
             {
 
                 g.Clear(Color.Black);
-               
-              //  g.DrawEllipse(new Pen(Color.Aquamarine, 3), 480, 120, 80,80);
                 emmiter.Render(g); // рендерим систему
                 
             }
@@ -111,9 +109,8 @@ namespace Kursach
         {
             foreach (var p in emmiter.impactPoints)
             {
-                if (p is Kruglishok) // так как impactPoints не обязательно содержит поле Power, надо проверить на тип 
+                if (p is Kruglishok)
                 {
-                    // если гравитон то меняем силу
                     (p as Kruglishok).rad = trackBar1.Value;
                 }
             }
@@ -121,16 +118,26 @@ namespace Kursach
 
         private void picDisplay_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach (var emitter in emmiters)
-            {
-                emitter.MousePositionX = e.X;
-                emitter.MousePositionY = e.Y;
-            }
 
-            // а тут передаем положение мыши, в положение гравитона
-            point5.X = e.X;
-            point5.Y = e.Y;
-            
+           
+            if(e.Button == MouseButtons.Left)
+            {
+                foreach (var emitter in emmiters)
+                {
+                    emitter.MousePositionX = e.X;
+                    emitter.MousePositionY = e.Y;
+                }
+
+                // а тут передаем положение мыши, в положение гравитона
+                point5.X = e.X;
+                point5.Y = e.Y;
+                emmiter.impactPoints.Add(point5);
+            }
+            else if(e.Button == MouseButtons.Right)
+            {
+                emmiter.impactPoints.RemoveAt(4);
+               
+            }
         }
     }
 }
