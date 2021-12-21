@@ -87,16 +87,9 @@ namespace Kursach
             picDisplay.Invalidate();
         }
 
-        private void picDisplay_MouseMove_1(object sender, MouseEventArgs e)
-        {
-
-
-        }
-
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             emmiter.SpeedMin = TBSpeedPart.Value;
-            label1.Text = $"{TBSpeedPart.Value}";
         }
 
         private void trackBar1_Scroll_1(object sender, EventArgs e)
@@ -139,12 +132,6 @@ namespace Kursach
         {
             point1.X = trackBar2.Value;
         }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
             point3.X = trackBar3.Value;
