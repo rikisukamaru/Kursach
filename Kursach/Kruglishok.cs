@@ -136,7 +136,6 @@ namespace Kursach
                 }
                 else if(color == Color.Red)
                 {
-
                     schet++;                  
                     particle.Life = 0;
                 }

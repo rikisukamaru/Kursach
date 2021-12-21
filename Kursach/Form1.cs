@@ -19,17 +19,16 @@ namespace Kursach
         Kruglishok point2;
         Kruglishok point3;
         Kruglishok point4;
-        Kruglishok point5;
         public Form1()
         {
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
-            
+
             emmiter = new LinEmmiter
             {
                 Width = picDisplay.Width,
                 GravitationY = 0.25f,
-                 SpeedMin = 1,
+                SpeedMin = 1,
                 SpeedMax = 30
             };
             emmiters.Add(emmiter);
@@ -38,41 +37,41 @@ namespace Kursach
             point1 = new Kruglishok
             {
                 X = picDisplay.Width / 2 + 190,
-                Y = picDisplay.Height / 4,
+                Y = picDisplay.Height / 4f,
                 color = Color.Purple
-                
+
             };
             point2 = new Kruglishok
             {
                 X = picDisplay.Width / 2 - 80,
-                Y = picDisplay.Height / 2,
+                Y = picDisplay.Height / 2f,
                 color = Color.Aqua
             };
             point3 = new Kruglishok
             {
                 X = picDisplay.Width / 2 + 50,
-                Y = picDisplay.Height / 3,
+                Y = picDisplay.Height / 3f,
                 color = Color.Violet
             };
             point4 = new Kruglishok
             {
                 X = picDisplay.Width / 2 - 200,
-                Y = 260 ,
+                Y = 260,
                 color = Color.Aquamarine
             };
-           
+
             // привязываем поля к эмиттеру
             emmiter.impactPoints.Add(point1);
             emmiter.impactPoints.Add(point2);
             emmiter.impactPoints.Add(point3);
             emmiter.impactPoints.Add(point4);
-           
-        }
-      
-       
-       
 
-        
+        }
+
+
+
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             emmiter.UpdateState(); // каждый тик обновляем систему
@@ -82,22 +81,22 @@ namespace Kursach
 
                 g.Clear(Color.Black);
                 emmiter.Render(g); // рендерим систему
-                
+
             }
 
             picDisplay.Invalidate();
         }
-     
+
         private void picDisplay_MouseMove_1(object sender, MouseEventArgs e)
         {
-          
-           
+
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-         emmiter.SpeedMin = TBSpeedPart.Value;
-         label1.Text = $"{TBSpeedPart.Value}";
+            emmiter.SpeedMin = TBSpeedPart.Value;
+            label1.Text = $"{TBSpeedPart.Value}";
         }
 
         private void trackBar1_Scroll_1(object sender, EventArgs e)
@@ -113,46 +112,32 @@ namespace Kursach
 
         private void picDisplay_MouseClick(object sender, MouseEventArgs e)
         {
-
-           
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-               
-                
-                foreach (var emitter in emmiters)
+                emmiter.impactPoints.Add(new Kruglishok
                 {
-                    emitter.MousePositionX = e.X;
-                    emitter.MousePositionY = e.Y;
-                }
-                point5 = new Kruglishok
-                {
-                    X = picDisplay.Width / 2 + 120,
-                    Y = 280,
+                    X = e.X,
+                    Y = e.Y,
                     color = Color.Red
-                };
-                // а тут передаем положение мыши, в положение гравитона
-                point5.X = e.X;
-                point5.Y = e.Y;
-
-                emmiter.impactPoints.Add(point5);
+                });
             }
-            else if(e.Button == MouseButtons.Right)
+            else if (e.Button == MouseButtons.Right)
             {
-                emmiter.impactPoints.Remove(point5);
-                
+                foreach (var impactPoint in emmiter.impactPoints)
+                {
+                    if (!(impactPoint is Kruglishok kruglishok)) continue;
+                    if (!(impactPoint.color == Color.Red)) continue;
+                    if (!(Math.Abs(kruglishok.X - e.X) <= kruglishok.rad) || !(Math.Abs(kruglishok.Y - e.Y) <= kruglishok.rad))
+                        continue;
+                    emmiter.impactPoints.Remove(kruglishok);
+                    break;
+                }
             }
         }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-           
             point1.X = trackBar2.Value;
-
-
-
-
-            // emmiter.X = trackBar2.Value;
-            // label1.Text = $"{TBSpeedPart.Value}";
         }
 
         private void label7_Click(object sender, EventArgs e)
