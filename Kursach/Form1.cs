@@ -117,29 +117,86 @@ namespace Kursach
            
             if(e.Button == MouseButtons.Left)
             {
+               
+                
+                foreach (var emitter in emmiters)
+                {
+                    emitter.MousePositionX = e.X;
+                    emitter.MousePositionY = e.Y;
+                }
                 point5 = new Kruglishok
                 {
                     X = picDisplay.Width / 2 + 120,
                     Y = 280,
                     color = Color.Red
                 };
-                emmiter.impactPoints.Add(point5);
-                foreach (var emitter in emmiters)
-                {
-                    emitter.MousePositionX = e.X;
-                    emitter.MousePositionY = e.Y;
-                }
-
                 // а тут передаем положение мыши, в положение гравитона
                 point5.X = e.X;
                 point5.Y = e.Y;
+
                 emmiter.impactPoints.Add(point5);
             }
             else if(e.Button == MouseButtons.Right)
             {
-                emmiter.impactPoints.RemoveAt(4);
-               
+                emmiter.impactPoints.Remove(point5);
+                
             }
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+           
+            point1.X = trackBar2.Value;
+
+
+
+
+            // emmiter.X = trackBar2.Value;
+            // label1.Text = $"{TBSpeedPart.Value}";
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            point3.X = trackBar3.Value;
+        }
+
+        private void trackBar4_Scroll(object sender, EventArgs e)
+        {
+            point2.X = trackBar4.Value;
+        }
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
+        {
+            point4.X = trackBar5.Value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            point1.color = Color.Pink;
+            point2.color = Color.Tomato;
+            point3.color = Color.CadetBlue;
+            point4.color = Color.YellowGreen;
+            label4.Text = "Pink";
+            label5.Text = "CadetBlue";
+            label6.Text = "Tomato";
+            label7.Text = "YellowGreen";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            point1.color = Color.Purple;
+            point2.color = Color.Aqua;
+            point3.color = Color.Violet;
+            point4.color = Color.Aquamarine;
+            label4.Text = "Purple";
+            label5.Text = "Aqua";
+            label6.Text = "Violet";
+            label7.Text = "Aquamarine";
         }
     }
 }

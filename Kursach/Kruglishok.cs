@@ -102,6 +102,38 @@ namespace Kursach
                         particleColor.ToColor = Color.FromArgb(0, Color.Aquamarine);
                     }
                 }
+                else if (color == Color.Pink)
+                {
+                    if (particle is ParticleColor particleColor)
+                    {
+                        particleColor.FromColor = Color.Pink;
+                        particleColor.ToColor = Color.FromArgb(0, Color.Pink);
+                    }
+                }
+                else if (color == Color.Tomato)
+                {
+                    if (particle is ParticleColor particleColor)
+                    {
+                        particleColor.FromColor = Color.Tomato;
+                        particleColor.ToColor = Color.FromArgb(0, Color.Tomato);
+                    }
+                }
+                else if (color == Color.CadetBlue)
+                {
+                    if (particle is ParticleColor particleColor)
+                    {
+                        particleColor.FromColor = Color.CadetBlue;
+                        particleColor.ToColor = Color.FromArgb(0, Color.CadetBlue);
+                    }
+                }
+                else if (color == Color.YellowGreen)
+                {
+                    if (particle is ParticleColor particleColor)
+                    {
+                        particleColor.FromColor = Color.YellowGreen;
+                        particleColor.ToColor = Color.FromArgb(0, Color.YellowGreen);
+                    }
+                }
                 else if(color == Color.Red)
                 {
 
